@@ -6,7 +6,7 @@ A light-grey European/Japanese SNES-inspired console around a terminal workspace
 
 ## What you see
 
-- An 82px console header in `#d1d2d5`, a four-dot jewel mark, SUPER HERDR branding, active space/machine text, a power lamp, SELECT/START, settings, and platform window controls.
+- An 82px console header in `#d1d2d5`, the supplied four-colour SNES logo at 48x34px to the left of SUPER HERDR branding, active space/machine text, a power lamp, SELECT/START, settings, and platform window controls.
 - A 4px stripe in blue `#2862ba`, red `#c8393e`, yellow `#efc748`, and green `#238b4f`.
 - A 252px sidebar with WORLD SELECT space cards grouped under 24px machine headings and space counts, PARTY agent rows, and a fixed controller below the scrollable lists. THIS MACHINE comes first, then named remotes. Long machine names truncate and have a full-name tooltip. Agent rows remain 57px tall, with 48px animal avatars and existing agent/tab/status/space labels.
 - A 36px cartridge tab strip above the active terminal. Terminal frames use 2px borders, 12px corners, 8px split gaps, a blue focus border, and 14px terminal padding.
@@ -48,6 +48,8 @@ root
 Use `div`, `image`, `svg`, `h_flex`, and `v_flex`, not HTML/CSS. Live data comes from `spaces()`, `agents()`, `machines()`, `props()`, and `window()`. `setAgentOrder()` matches the sidebar order. `run()`, `openOverlay()`, and `closeOverlay()` handle actions.
 
 Reuse Herdr's shipped `menu` and `new-menu` mods, `mods/workspace-chrome/settings.svg`, and `mods/tabs/win-{min,max,restore,close}.svg`. Keep the logical `mods/snes/` asset paths consistent with the mod name.
+
+Bundle the supplied logo as `mods/snes/snes-logo.png`, with its baked-in checkerboard removed and empty margins trimmed. Render it in full colour using `image()`, and include it in the installer's bundled-file list so both fresh installs and updates receive it. Keep the existing header height and branding text. The Nintendo mark is not covered by the project's MIT license.
 
 Bundle Pixelherd's `duck.svg`, `frog.svg`, `cat.svg`, and `penguin.svg` under `mods/snes/sprites/`. Render them in full colour using `image()`, not tinted `svg()`. Preserve the source attribution and Apache-2.0 license. Keep the MIT license for the LCARS-derived UI patterns.
 

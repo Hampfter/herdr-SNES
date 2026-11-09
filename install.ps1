@@ -8,7 +8,7 @@ Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 $modFiles = @(
-    'main.js', 'mod.json', 'LICENSE', 'LICENSE.pixelherd',
+    'main.js', 'mod.json', 'LICENSE', 'LICENSE.pixelherd', 'snes-logo.png',
     'sprites\duck.svg', 'sprites\frog.svg', 'sprites\cat.svg', 'sprites\penguin.svg'
 )
 $layoutFiles = @('snes.json', 'snes.svg')

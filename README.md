@@ -24,7 +24,7 @@ Download or copy this whole repository to the other machine. In PowerShell 7, op
 
 The installer installs or updates the layout and its mod in `~\.config\herdr-app`, then runs Herdr's native mod check. Run the same command again after downloading a newer version to update an existing installation. Existing Super Herdr mods are recognized by the `Super Herdr` title in `mods\snes\mod.json`; unrelated name conflicts are still refused.
 
-Updates replace only the bundled layout, mod, sprite, and license files. Back up any local edits to those files first. Unlisted custom files, other layouts, settings, shortcuts, sessions, and the selected layout are preserved.
+Updates replace only the bundled layout, mod, artwork, and license files. Back up any local edits to those files first. Unlisted custom files, other layouts, settings, shortcuts, sessions, and the selected layout are preserved.
 
 After installation succeeds, activate the layout:
 
@@ -77,7 +77,7 @@ Do not install this README, recipe, root preview, or generated editor helpers in
 | Right-click cards or tabs | Context menu for the clicked item |
 | Gear | Settings |
 
-The header includes native window controls where Herdr requests them, and leaves room for macOS traffic lights. The footer shows working/blocked/done counts, machines, an app menu, and the clock.
+The header displays the supplied four-colour SNES logo to the left of SUPER HERDR, includes native window controls where Herdr requests them, and leaves room for macOS traffic lights. The footer shows working/blocked/done counts, machines, an app menu, and the clock.
 
 WORLD SELECT groups spaces under machine headings with a space count: THIS MACHINE first, followed by remote machines sorted by name. Machines without spaces are hidden. Spaces retain their original order within each group and their native numbers; the D-pad still uses Herdr's global previous/next space commands.
 
@@ -105,6 +105,7 @@ After switching away, remove only `layouts/snes.json`, `layouts/snes.svg`, and `
 
 - LCARS-derived UI patterns: Josef Kuepker, MIT; see `LICENSE` and `mods/snes/LICENSE`.
 - Pixelherd animal graphics, assignment, and animation behavior: John Zetterman, derived from Herdr 0.1.13's agent mod, Apache-2.0; see `mods/snes/LICENSE.pixelherd` and the source attribution.
+- The user-supplied SNES logo (`mods/snes/snes-logo.png`) is a Nintendo trademark and is not covered by this project's MIT license.
 - This is an independent SNES-inspired layout, not an official Nintendo product. It contains no copied Nintendo game sprites.
 
 Keep these licenses and attribution with redistributed copies. To list a published repository in Herdr's layout gallery, add the GitHub topic `herdr-layout`.
