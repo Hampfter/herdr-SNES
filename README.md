@@ -77,6 +77,8 @@ Do not install this README, recipe, root preview, or generated editor helpers in
 
 The header includes native window controls where Herdr requests them, and leaves room for macOS traffic lights. The footer shows working/blocked/done counts, machines, an app menu, and the clock.
 
+WORLD SELECT groups spaces under machine headings with a space count: THIS MACHINE first, followed by remote machines sorted by name. Machines without spaces are hidden. Spaces retain their original order within each group and their native numbers; the D-pad still uses Herdr's global previous/next space commands.
+
 Each agent keeps the same duck, frog, cat, or penguin as in Pixelherd, selected from its terminal address. Working animals bob natively; idle animals show a boxed `z`; blocked status indicators pulse. Only the animal visualization is reused, not Pixelherd's panes, headers, backgrounds, or sorting.
 
 ## Files and privacy

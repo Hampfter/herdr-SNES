@@ -8,7 +8,7 @@ A light-grey European/Japanese SNES-inspired console around a terminal workspace
 
 - An 82px console header in `#d1d2d5`, a four-dot jewel mark, SUPER HERDR branding, active space/machine text, a power lamp, SELECT/START, settings, and platform window controls.
 - A 4px stripe in blue `#2862ba`, red `#c8393e`, yellow `#efc748`, and green `#238b4f`.
-- A 252px sidebar with WORLD SELECT space cards, PARTY agent rows, and a fixed controller below the scrollable lists. Agent rows remain 57px tall, with 48px animal avatars and existing agent/tab/status/space labels.
+- A 252px sidebar with WORLD SELECT space cards grouped under 24px machine headings and space counts, PARTY agent rows, and a fixed controller below the scrollable lists. THIS MACHINE comes first, then named remotes. Long machine names truncate and have a full-name tooltip. Agent rows remain 57px tall, with 48px animal avatars and existing agent/tab/status/space labels.
 - A 36px cartridge tab strip above the active terminal. Terminal frames use 2px borders, 12px corners, 8px split gaps, a blue focus border, and 14px terminal padding.
 - A 34px charcoal footer with working/blocked/done counts, machine count, app menu, and a clock.
 - Geist for UI headings, Geist Mono for small console labels. The terminal uses the user's font preference. Terminal background is `#1b1e25`; foreground is `#e8ebf1`. The theme picker can override the layout's look.
@@ -17,6 +17,7 @@ A light-grey European/Japanese SNES-inspired console around a terminal workspace
 ## How it behaves
 
 - D-pad left/right selects the previous/next tab. Up/down selects the previous/next space. Center zooms the focused pane.
+- Group spaces by their `machine` field, treating null/missing as this machine. Show only groups containing spaces: local first, then remotes sorted by name. Preserve each group's native space order, original global numbers, and card colours. Include spaces whose machine is offline or absent from `machines()`. The D-pad continues to use native global space order rather than the visually grouped order.
 - X and SELECT open the command palette. A, START, and the tab `+` open the terminal/agent creation menu. B focuses the next agent. Y and NEW SPACE create a space.
 - If remote machines are configured, creating a space opens a local/remote picker. Only ready machines can be selected. An explicit empty machine name creates locally.
 - Space, tab, and agent cards focus their own targets. Right-clicking opens the clicked item's menu, not a menu for whatever was previously selected. The footer and chrome expose the global menu.
@@ -70,5 +71,6 @@ There are no network calls, external program executions, filesystem reads, or de
 - Left/right changes tabs; up/down changes spaces; the centre still zooms. X/A/B/Y and SELECT/START have the actions above.
 - Animals retain their identity across status changes and reordering. Working motion is visible between rendered frames; idle adds `z`; blocked pulses.
 - Agent and context-menu clicks target the correct agent/pane. Local and ready-remote space creation use the correct machine.
+- Local-only, remote-only, mixed/interleaved, offline/unknown-machine, and empty space lists render without missing or duplicated spaces. Machine counts and local-first/name-sorted headings are correct; long labels do not displace counts.
 - Only animal avatars are taken from Pixelherd; the SNES pane, headers, backgrounds, row height, and labels remain.
 - The installer refuses collisions and incomplete packages, preserves unrelated configuration, reports validation failures, and never changes the active layout itself.

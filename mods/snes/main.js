@@ -70,7 +70,7 @@ function section(label, count, color) {
   return h_flex().h(32).flex_none().gap(8).items_center().font_family(MONO)
     .text_size(10).font_bold().text_color(C.muted)
     .child(div().w(3).h(12).rounded(1).bg(color))
-    .child(label).child(div().flex_1()).child(two(count));
+    .child(div().flex_1().min_w(0).truncate().child(label)).child(two(count));
 }
 
 function controller() {
@@ -186,6 +186,18 @@ export default class SuperHerdr extends View {
         .child(div().truncate().text_size(12).font_semibold().text_color(s.active ? C.white : C.ink).child(s.name))
         .child(div().truncate().font_family(MONO).text_size(9).text_color(s.active ? "#bac0cc" : C.muted)
           .child(upper(s.machine ?? "LOCAL"))));
+    const groups = new Map();
+    list.forEach((s, i) => {
+      const machine = s.machine ?? null;
+      if (!groups.has(machine)) groups.set(machine, []);
+      groups.get(machine).push(spaceRow(s, i));
+    });
+    const machineGroups = [...groups].sort(([left], [right]) => {
+      if (left === right) return 0;
+      if (left === null) return -1;
+      if (right === null) return 1;
+      return left.localeCompare(right);
+    });
     const agentRow = (a) => {
       const s = state(a.status);
       return h_flex().id(`agent-${a.address}`).h(57).flex_none().px(9).gap(9).rounded(7)
@@ -203,7 +215,11 @@ export default class SuperHerdr extends View {
       .on_mouse_down("right", right(() => menu("global")))
       .child(v_flex().id("snes-lists").flex_1().min_h(0).overflow_y_scrollbar()
         .child(section("WORLD SELECT", list.length, C.blue))
-        .child(v_flex().flex_none().gap(6).children(list.map(spaceRow)))
+        .child(v_flex().flex_none().gap(6).children(machineGroups.map(([machine, rows]) =>
+          v_flex().id(`space-machine-${machine === null ? "local" : `remote-${machine}`}`).flex_none()
+            .child(section(upper(machine ?? "THIS MACHINE"), rows.length, C.edge).h(24).text_size(9)
+              .tooltip(machine ?? "This machine"))
+            .child(v_flex().flex_none().gap(6).children(rows)))))
         .child(div().h(8).flex_none())
         .child(pill("space-new", "+ NEW SPACE", newSpace))
         .child(div().h(8).flex_none())

@@ -20,23 +20,35 @@
   <path d="M400 64h200" stroke="#efc748" stroke-width="4"/>
   <path d="M600 64h200" stroke="#238b4f" stroke-width="4"/>
   <g font-family="monospace" font-size="9" fill="#626773">
-    <text x="16" y="90">WORLD SELECT</text><text x="16" y="232">PARTY</text>
+    <text x="16" y="90">WORLD SELECT</text><text x="16" y="250">PARTY</text>
   </g>
-  <rect x="12" y="102" width="174" height="42" rx="7" fill="#343944"/>
-  <rect x="12" y="150" width="174" height="42" rx="7" fill="#e5e6e8" stroke="#adb0b7"/>
-  <rect x="22" y="111" width="4" height="24" rx="2" fill="#2862ba"/>
-  <rect x="22" y="159" width="4" height="24" rx="2" fill="#c8393e"/>
+  <g font-family="monospace" font-size="8" fill="#626773">
+    <text x="16" y="105">THIS MACHINE</text><text x="174" y="105" text-anchor="end">01</text>
+    <text x="16" y="177">BUILD BOX</text><text x="174" y="177" text-anchor="end">01</text>
+  </g>
+  <rect x="12" y="114" width="174" height="42" rx="7" fill="#343944"/>
+  <rect x="12" y="186" width="174" height="42" rx="7" fill="#e5e6e8" stroke="#adb0b7"/>
+  <rect x="22" y="123" width="4" height="24" rx="2" fill="#2862ba"/>
+  <rect x="22" y="195" width="4" height="24" rx="2" fill="#c8393e"/>
   <g font-family="sans-serif" font-size="12">
-    <text x="38" y="121" fill="#f4f5f7">World 01</text>
-    <text x="38" y="135" fill="#bac0cc" font-size="8">LOCAL</text>
-    <text x="38" y="171" fill="#30343c">World 02</text>
-    <text x="38" y="184" fill="#626773" font-size="8">LOCAL</text>
+    <text x="38" y="133" fill="#f4f5f7">World 01</text>
+    <text x="38" y="147" fill="#bac0cc" font-size="8">LOCAL</text>
+    <text x="38" y="207" fill="#30343c">World 02</text>
+    <text x="38" y="220" fill="#626773" font-size="8">BUILD BOX</text>
   </g>
-  <rect x="12" y="244" width="174" height="52" rx="7" fill="#343944"/>
-  <circle cx="26" cy="266" r="4" fill="#86b2ff"/>
+  <rect x="12" y="264" width="174" height="52" rx="7" fill="#343944"/>
+  <g transform="translate(20 266) scale(3)" shape-rendering="crispEdges">
+    <path fill="#1e1626" d="M2 2h1v1h-1zM9 2h1v1h-1zM1 3h1v1h-1zM3 3h1v1h-1zM8 3h1v1h-1zM10 3h1v1h-1zM1 4h1v1h-1zM4 4h4v1h-4zM10 4h1v1h-1zM1 5h1v1h-1zM10 5h1v1h-1zM1 6h1v1h-1zM10 6h1v1h-1zM1 7h1v1h-1zM4 7h1v1h-1zM7 7h1v1h-1zM10 7h1v1h-1zM1 8h1v1h-1zM10 8h1v1h-1zM13 8h1v1h-1zM2 9h1v1h-1zM5 9h2v1h-2zM9 9h1v1h-1zM12 9h1v1h-1zM14 9h1v1h-1zM2 10h1v1h-1zM9 10h1v1h-1zM12 10h1v1h-1zM14 10h1v1h-1zM1 11h1v1h-1zM10 11h1v1h-1zM12 11h1v1h-1zM14 11h1v1h-1zM1 12h1v1h-1zM10 12h2v1h-2zM13 12h1v1h-1zM1 13h1v1h-1zM12 13h1v1h-1zM1 14h1v1h-1zM4 14h1v1h-1zM7 14h1v1h-1zM10 14h2v1h-2zM2 15h9v1h-9z"/>
+    <path fill="#a6e3a1" d="M3 7h1v1h-1zM8 7h1v1h-1z"/>
+    <path fill="#c46f2a" d="M4 5h1v1h-1zM7 5h1v1h-1zM13 9h1v1h-1zM13 10h1v1h-1zM3 11h1v1h-1zM8 11h1v1h-1zM13 11h1v1h-1zM12 12h1v1h-1zM3 13h1v1h-1zM8 13h1v1h-1zM11 13h1v1h-1z"/>
+    <path fill="#f0a04b" d="M2 3h1v1h-1zM9 3h1v1h-1zM3 4h1v1h-1zM8 4h1v1h-1zM2 5h2v1h-2zM5 5h2v1h-2zM8 5h2v1h-2zM2 6h8v1h-8zM2 7h1v1h-1zM5 7h2v1h-2zM9 7h1v1h-1zM2 8h3v1h-3zM7 8h3v1h-3zM3 10h2v1h-2zM7 10h2v1h-2zM2 11h1v1h-1zM4 11h1v1h-1zM7 11h1v1h-1zM9 11h1v1h-1zM2 12h3v1h-3zM7 12h3v1h-3zM2 13h1v1h-1zM4 13h1v1h-1zM7 13h1v1h-1zM9 13h2v1h-2zM2 14h2v1h-2zM8 14h2v1h-2z"/>
+    <path fill="#f5a3b5" d="M2 4h1v1h-1zM9 4h1v1h-1zM5 8h2v1h-2z"/>
+    <path fill="#fbe3c4" d="M3 9h2v1h-2zM7 9h2v1h-2zM5 10h2v1h-2zM5 11h2v1h-2zM5 12h2v1h-2zM5 13h2v1h-2zM5 14h2v1h-2z"/>
+  </g>
+  <circle cx="66" cy="309" r="3" fill="#86b2ff"/>
   <g font-family="monospace" fill="#f4f5f7">
-    <text x="40" y="264" font-size="11">Copilot / 01</text>
-    <text x="40" y="282" font-size="8" fill="#86b2ff">WORKING / WORLD 01</text>
+    <text x="78" y="284" font-size="10">Copilot / 01</text>
+    <text x="78" y="302" font-size="8" fill="#86b2ff">WORKING / WORLD 01</text>
   </g>
   <rect x="12" y="326" width="174" height="126" rx="14" fill="#e5e6e8" stroke="#adb0b7"/>
   <text x="24" y="345" font-family="monospace" font-size="8" fill="#626773">CONTROLLER / P1</text>
