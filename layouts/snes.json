@@ -1,0 +1,110 @@
+{
+  "id": "root",
+  "type": "column",
+  "titlebar": "none",
+  "traffic_lights": [16, 16],
+  "preview": "layouts/snes.svg",
+  "theme": "graphite",
+  "ui_font": "Geist",
+  "background": "#d1d2d5",
+  "terminal_padding": [14, 14],
+  "colors": {
+    "background": "#1b1e25",
+    "foreground": "#e8ebf1",
+    "selection": "#355382",
+    "canvas": "#d1d2d5",
+    "chrome": "#252a33",
+    "surface": "#252a33",
+    "popover": "#252a33",
+    "raised": "#343944",
+    "hover": "#ffffff12",
+    "selected": "#2862ba44",
+    "border": "#535a67",
+    "input": "#697180",
+    "muted": "#bac0cc",
+    "dim": "#949dab",
+    "accent": "#86b2ff",
+    "accent_foreground": "#1b1e25",
+    "solid": "#2862ba",
+    "solid_foreground": "#ffffff",
+    "working": "#86b2ff",
+    "blocked": "#ff9394",
+    "done": "#81dfa4",
+    "idle": "#efcf6a",
+    "unknown": "#b7bcc7",
+    "ansi0": "#343944",
+    "ansi1": "#eb6b71",
+    "ansi2": "#6bc58e",
+    "ansi3": "#efcf6a",
+    "ansi4": "#7ca6f5",
+    "ansi5": "#ca9adf",
+    "ansi6": "#79c6d7",
+    "ansi7": "#d6dbe4",
+    "ansi8": "#828b9c",
+    "ansi9": "#ff9394",
+    "ansi10": "#81dfa4",
+    "ansi11": "#f8e38c",
+    "ansi12": "#a7c7ff",
+    "ansi13": "#e0b5f2",
+    "ansi14": "#9ae4ed",
+    "ansi15": "#f4f5f7"
+  },
+  "children": [
+    {
+      "id": "top",
+      "type": "block",
+      "size": { "px": 82 },
+      "window_drag": true,
+      "content": { "mod": "snes", "props": { "part": "top" } }
+    },
+    {
+      "id": "body",
+      "type": "row",
+      "resizable": false,
+      "children": [
+        {
+          "id": "sidebar",
+          "type": "block",
+          "size": { "px": 252 },
+          "content": { "mod": "snes", "props": { "part": "side" } }
+        },
+        {
+          "id": "work",
+          "type": "column",
+          "padding": [10, 12],
+          "gap": 8,
+          "resizable": false,
+          "children": [
+            {
+              "id": "tabs",
+              "type": "block",
+              "size": { "px": 36 },
+              "content": { "mod": "snes", "props": { "part": "tabs" } }
+            },
+            {
+              "id": "main",
+              "type": "block",
+              "content": {
+                "tab": "active",
+                "pane": {
+                  "gap": 8,
+                  "radius": 12,
+                  "background": "#1b1e25",
+                  "border": { "width": 2, "color": "#535a67" },
+                  "focus": { "width": 2, "color": "#2862ba" },
+                  "lone": true
+                }
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "bottom",
+      "type": "block",
+      "size": { "px": 34 },
+      "content": { "mod": "snes", "props": { "part": "bottom" } }
+    }
+  ]
+}

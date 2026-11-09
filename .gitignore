@@ -1,0 +1,12 @@
+mods/**/gpui-kit.d.ts
+mods/**/herdr.d.ts
+mods/**/jsconfig.json
+settings.json
+keys.json
+shared.json
+view.json
+seen.json
+data/
+layouts/.state/
+.DS_Store
+Thumbs.db
