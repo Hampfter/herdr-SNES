@@ -22,7 +22,9 @@ Download or copy this whole repository to the other machine. In PowerShell 7, op
 .\install.ps1
 ```
 
-The installer copies the layout and its mod into `~\.config\herdr-app`, then runs Herdr's native mod check. It refuses to overwrite an existing `mods\snes`, `layouts\snes.json`, or `layouts\snes.svg`. It does not change settings, shortcuts, sessions, or the selected layout.
+The installer installs or updates the layout and its mod in `~\.config\herdr-app`, then runs Herdr's native mod check. Run the same command again after downloading a newer version to update an existing installation. Existing Super Herdr mods are recognized by the `Super Herdr` title in `mods\snes\mod.json`; unrelated name conflicts are still refused.
+
+Updates replace only the bundled layout, mod, sprite, and license files. Back up any local edits to those files first. Unlisted custom files, other layouts, settings, shortcuts, sessions, and the selected layout are preserved.
 
 After installation succeeds, activate the layout:
 
@@ -30,7 +32,7 @@ After installation succeeds, activate the layout:
 herdr-app do layout.switch --name snes
 ```
 
-`.\install.ps1 -WhatIf` previews the installation after checking prerequisites and name conflicts. `-HerdrHome 'C:\path\to\herdr-app'` supports a custom configuration folder; use it only for the configuration your Herdr installation actually uses.
+`.\install.ps1 -WhatIf` previews installation or updating after checking prerequisites and name conflicts, without changing files. `-HerdrHome 'C:\path\to\herdr-app'` supports a custom configuration folder; use it only for the configuration your Herdr installation actually uses.
 
 If PowerShell blocks the script, follow your machine's script-execution policy or use the manual installation below.
 
@@ -46,7 +48,7 @@ Copy only:
 | `layouts/snes.svg` | `layouts/snes.svg` |
 | The whole `mods/snes` folder, including sprites and licenses | `mods/snes` |
 
-Keep the `snes` names: the layout and mod reference them. Do not overwrite an existing installation. Back it up and resolve the name conflict first.
+Keep the `snes` names: the layout and mod reference them. Do not overwrite an unrelated layout or mod using that name. To manually update Super Herdr, back up local edits and replace only the bundled theme files; preserve unlisted custom files and all other configuration.
 
 On macOS/Linux, validate and then activate:
 

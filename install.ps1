@@ -37,24 +37,41 @@ foreach ($file in $builtIns) {
         throw "Missing Herdr file: $file. Install and start Herdr 0.1.14 or newer before running this installer."
     }
 }
-foreach ($relative in @('mods\snes', 'layouts\snes.json', 'layouts\snes.svg')) {
-    if (Test-Path -LiteralPath (Join-Path $HerdrHome $relative)) {
-        throw "Refusing to overwrite $relative. Back up or rename the existing SNES installation first."
+$modTarget = Join-Path $HerdrHome 'mods\snes'
+$existing = @(foreach ($relative in @('mods\snes', 'layouts\snes.json', 'layouts\snes.svg')) {
+    if (Test-Path -LiteralPath (Join-Path $HerdrHome $relative)) { $relative }
+})
+if ($existing.Count) {
+    $manifestPath = Join-Path $modTarget 'mod.json'
+    if (!(Test-Path -LiteralPath $modTarget -PathType Container) -or
+        !(Test-Path -LiteralPath $manifestPath -PathType Leaf)) {
+        throw 'Refusing to overwrite an unrecognized SNES installation. Back up or rename the conflicting files first.'
+    }
+    $manifest = Get-Content -Raw -LiteralPath $manifestPath | ConvertFrom-Json -AsHashtable
+    if ($manifest -isnot [System.Collections.IDictionary] -or $manifest['title'] -ne 'Super Herdr') {
+        throw 'Refusing to overwrite an unrelated SNES mod. Its mod.json title must be Super Herdr for automatic updates.'
+    }
+}
+$targets = @($modFiles | ForEach-Object { "mods\snes\$_" }) +
+    @($layoutFiles | ForEach-Object { "layouts\$_" })
+foreach ($relative in $targets) {
+    $target = Join-Path $HerdrHome $relative
+    if ((Test-Path -LiteralPath $target) -and !(Test-Path -LiteralPath $target -PathType Leaf)) {
+        throw "Refusing to replace a non-file destination: $relative."
     }
 }
 
 $herdr = Get-Command herdr-app -ErrorAction Stop
-if (!$PSCmdlet.ShouldProcess($HerdrHome, 'Install the Super Herdr layout (snes)')) {
+if (!$PSCmdlet.ShouldProcess($HerdrHome, 'Install or update the Super Herdr layout (snes)')) {
     return
 }
 
-$modTarget = Join-Path $HerdrHome 'mods\snes'
 $null = New-Item -ItemType Directory -Path (Join-Path $modTarget 'sprites') -Force
 foreach ($file in $modFiles) {
-    Copy-Item -LiteralPath (Join-Path $PSScriptRoot "mods\snes\$file") -Destination (Join-Path $modTarget $file)
+    Copy-Item -LiteralPath (Join-Path $PSScriptRoot "mods\snes\$file") -Destination (Join-Path $modTarget $file) -Force
 }
 foreach ($file in $layoutFiles) {
-    Copy-Item -LiteralPath (Join-Path $PSScriptRoot "layouts\$file") -Destination (Join-Path $HerdrHome "layouts\$file")
+    Copy-Item -LiteralPath (Join-Path $PSScriptRoot "layouts\$file") -Destination (Join-Path $HerdrHome "layouts\$file") -Force
 }
 
 $check = & $herdr check $modTarget 2>&1 | Out-String
@@ -63,5 +80,5 @@ if ($check -notmatch '(?m)^check passed:') {
     throw "SNES files were copied, but Herdr validation failed. Nothing was activated. Resolve the reported error before switching layouts."
 }
 
-Write-Host "Installed Super Herdr into $HerdrHome. Existing settings and the selected layout were not changed."
+Write-Host "Installed or updated Super Herdr in $HerdrHome. Existing settings and the selected layout were not changed."
 Write-Host 'Activate it with: herdr-app do layout.switch --name snes'

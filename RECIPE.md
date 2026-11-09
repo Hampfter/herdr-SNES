@@ -56,7 +56,7 @@ There are no network calls, external program executions, filesystem reads, or de
 ## Watch out
 
 - Start with Herdr 0.1.14's API or a compatible newer version. Shipped layouts and mods are read-only; add a separate `snes` layout/mod instead.
-- Do not overwrite another `snes` installation. Renaming requires updating the layout's mod names, self-referencing popup name, and logical asset paths together.
+- The Windows installer updates existing Super Herdr installations, identified by the `Super Herdr` title in `mods/snes/mod.json`. Updates replace only bundled theme files, including local edits to those files; unlisted files and user configuration are preserved. Refuse unrelated `snes` name conflicts. Renaming requires updating the layout's mod names, self-referencing popup name, and logical asset paths together.
 - Keep saved user state, machine details, settings, shortcuts, and generated editor declarations out of the package.
 - Native mod checks cover eager rendering only. Exercise all five parts and non-empty working/blocked/done/idle agent lists as well.
 - Keep the titlebar controls usable on Windows and leave native macOS button space. Narrow windows truncate labels; the sidebar width is fixed.
@@ -73,4 +73,4 @@ There are no network calls, external program executions, filesystem reads, or de
 - Agent and context-menu clicks target the correct agent/pane. Local and ready-remote space creation use the correct machine.
 - Local-only, remote-only, mixed/interleaved, offline/unknown-machine, and empty space lists render without missing or duplicated spaces. Machine counts and local-first/name-sorted headings are correct; long labels do not displace counts.
 - Only animal avatars are taken from Pixelherd; the SNES pane, headers, backgrounds, row height, and labels remain.
-- The installer refuses collisions and incomplete packages, preserves unrelated configuration, reports validation failures, and never changes the active layout itself.
+- The installer supports fresh installs and repeat updates, repairs missing bundled files in a recognized installation, preserves unrelated/custom files and configuration, and makes no changes with `-WhatIf`. It refuses unrelated name collisions, non-file destinations, and incomplete packages, reports validation failures, and never changes the active layout itself.
