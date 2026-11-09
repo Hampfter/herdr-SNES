@@ -11,6 +11,7 @@ The preview is an illustration with fictional workspace and terminal content, no
 - Herdr, installed and started at least once. Tested with Herdr 0.1.14.
 - The `herdr-app` command available in your terminal.
 - PowerShell 7 or newer for the Windows installer.
+- Bash and Python 3 for the Linux installer. Python is used only to safely identify existing installations from their JSON manifest.
 
 No separate Pixelherd installation, extra fonts, Node.js packages, or build step is needed. The layout uses Herdr's shipped Geist/Geist Mono fonts, menu mods, settings icon, and window-control icons.
 
@@ -35,6 +36,32 @@ herdr-app do layout.switch --name snes
 `.\install.ps1 -WhatIf` previews installation or updating after checking prerequisites and name conflicts, without changing files. `-HerdrHome 'C:\path\to\herdr-app'` supports a custom configuration folder; use it only for the configuration your Herdr installation actually uses.
 
 If PowerShell blocks the script, follow your machine's script-execution policy or use the manual installation below.
+
+## Install on Linux
+
+Download or copy this whole repository. Open its folder in a terminal and run as your normal user, without `sudo`:
+
+```sh
+bash ./install.sh
+```
+
+The script installs or updates Super Herdr in `~/.config/herdr-app`, including the SNES logo, animals, and licenses, then runs Herdr's native mod check. Rerun it after downloading a newer version to update. Only bundled theme files are replaced, including local edits to those files; back them up first. Settings, other layouts, sessions, and unlisted custom files are preserved. Unrelated `snes` name conflicts are refused.
+
+After installation succeeds, activate the layout:
+
+```sh
+herdr-app do layout.switch --name snes
+```
+
+Preview an installation or update without writing files:
+
+```sh
+bash ./install.sh --dry-run
+```
+
+Use `bash ./install.sh --herdr-home '/path/to/herdr-app'` for a custom configuration folder. Target the same folder your Herdr installation actually uses; when activating that profile, use `HERDR_APP_HOME='/path/to/herdr-app' herdr-app do layout.switch --name snes`.
+
+The installer refuses symbolic links at bundled destination files and directories below the configuration root, rather than overwriting files elsewhere. The script runs via Bash and does not need its executable permission set.
 
 ## Manual installation, including macOS and Linux
 
@@ -89,7 +116,7 @@ Each agent keeps the same duck, frog, cat, or penguin as in Pixelherd, selected 
 
 The package contains no personal settings, shortcuts, saved layout state, terminals, machine credentials, or live screenshots. The mod does not fetch network resources, launch external programs, or read files from your system. Its buttons use Herdr's own commands; deliberately creating a terminal or a space still starts the shell or agent you select.
 
-The Windows installer only copies the listed files and invokes `herdr-app check`. If validation fails, it reports failure and leaves the copied files for inspection; it never activates an invalid installation.
+The installers only copy the listed files and invoke `herdr-app check`. If validation fails, they report failure and leave the copied files for inspection; they never activate an invalid installation.
 
 ## Switch back or remove
 
