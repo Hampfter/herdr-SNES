@@ -9,7 +9,7 @@ A light-grey European/Japanese SNES-inspired console around a terminal workspace
 - An 82px console header in `#d1d2d5`, the supplied four-colour SNES logo at 48x34px to the left of SUPER HERDR branding, active space/machine text, a power lamp, SELECT/START, settings, and platform window controls.
 - A 4px stripe in blue `#2862ba`, red `#c8393e`, yellow `#efc748`, and green `#238b4f`.
 - A 252px sidebar with WORLD SELECT space cards grouped under 24px machine headings and space counts, PARTY agent rows, and a fixed controller below the scrollable lists. THIS MACHINE comes first, then named remotes. Long machine names truncate and have a full-name tooltip. Agent rows remain 57px tall, with 48px animal avatars and existing agent/tab/status/space labels.
-- A 36px cartridge tab strip above the active terminal. Terminal frames use 2px borders, 12px corners, 8px split gaps, a blue focus border, and 14px terminal padding.
+- A 36px cartridge tab strip directly above the active terminal, with no gap between them. Terminal frames use 2px borders, 12px corners, 8px split gaps, a blue focus border, and 14px terminal padding.
 - A 34px charcoal footer with working/blocked/done counts, machine count, app menu, and a clock.
 - Geist for UI headings, Geist Mono for small console labels. The terminal uses the user's font preference. Terminal background is `#1b1e25`; foreground is `#e8ebf1`. The theme picker can override the layout's look.
 - Controller face buttons: blue X at the top, red A at the right, yellow B at the bottom, green Y at the left. Do not use the purple North American controller palette.
@@ -37,7 +37,7 @@ root
   top: snes { part: "top" }, draggable
   body: non-resizable row
     sidebar: snes { part: "side" }, 252px
-    work: non-resizable column, padding [10, 12], gap 8
+    work: non-resizable column, padding [10, 12], gap 0
       tabs: snes { part: "tabs" }, 36px
       main: active tab with framed panes
   bottom: snes { part: "bottom" }, 34px
